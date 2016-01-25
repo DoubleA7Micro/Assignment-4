@@ -32,6 +32,8 @@ module.exports.init = function() {
   app.use('/api/listings',listingsRouter);
 
   /* go to homepage for all routes not specified */ 
-  app.use('/',express.static('client'));
+  app.get('/*', function(req, res) {
+      res.sendFile(path.join(__dirname,'../../client/index.html'));
+    });
   return app;
 };  
